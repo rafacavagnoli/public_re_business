@@ -32,7 +32,7 @@ else:
     # Map Visualization as the first element
     if "Latitude" in data.columns and "Longitude" in data.columns:
         st.write("### Map of Filtered Towns")
-        fig = px.scatter_geo(
+        fig = px.scatter_mapbox(
             data_filtered,
             lat="Latitude",
             lon="Longitude",
@@ -40,8 +40,9 @@ else:
             hover_data={"County": True, "Commute Time (mins)": True, "Asking Price 2b": True},
             color="County",
             size_max=15,
-            projection="natural earth",
-            title="Geographic Distribution of Filtered Towns"
+            zoom=6,
+            height=500,
+            mapbox_style="carto-positron"
         )
         st.plotly_chart(fig)
 
