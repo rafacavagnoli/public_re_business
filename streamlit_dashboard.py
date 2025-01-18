@@ -68,19 +68,4 @@ fig = px.bar(
 )
 st.plotly_chart(fig)
 
-# Map Visualization
-if "Latitude" in data.columns and "Longitude" in data.columns:
-    st.write("### Map of Filtered Towns")
-    fig = px.scatter_mapbox(
-        data_filtered,
-        lat="Latitude",
-        lon="Longitude",
-        hover_name="Town",
-        hover_data={"County": True, "Commute Time (mins)": True},
-        color="County",
-        size_max=15,
-        zoom=6,
-        height=500
-    )
-    fig.update_layout(mapbox_style="open-street-map")
-    st.plotly_chart(fig)
+
