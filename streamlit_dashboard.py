@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
+import plotly.express as px
 
 # Load the data
 data_path = "Extracted_Towns_and_Counties.xlsx"
@@ -41,6 +42,41 @@ ax.set_title("Town Count by County")
 ax.set_xlabel("County")
 ax.set_ylabel("Number of Towns")
 st.pyplot(fig)
+
+# Adding a map visualization if latitude and longitude are available
+if "Latitude" in data.columns and "Longitude" in data.columns:
+    st.write("### Map of Filtered Towns")
+    fig = px.scatter_mapbox(
+        data_filtered,
+        lat="Latitude",
+        lon="Longitude",
+        hover_name="Town",
+        hover_data={"County": True, "Commute Time (mins)": True},
+        color="County",
+        size_max=15,
+        zoom=8,
+        height=500
+    )
+    fig.update_layout(mapbox_style="open-street-map")
+    st.plotly_chart(fig)
+
+# Adding a scatter plot for price vs commute time
+st.write("### Price vs Commute Time")
+fig = px.scatter(
+    data_filtered,
+    x="Commute Time (mins)",
+    y="Asking Price 2b",
+    color="County",
+    hover_name="Town",
+    title="Price vs Commute Time for 2-Bedroom Properties",
+    labels={"Commute Time (mins)": "Commute Time (mins)", "Asking Price 2b": "Asking Price (£)"}
+)
+st.plotly_chart(fig)
+
+# Adding analysis: Average asking price by county
+st.write("### Average Asking Price by County")
+avg_prices = data_filtered.groupby("County")["Asking Price 2b"].mean().sort_values()
+st.bar_chart(avg_prices)
 
 st.write("### Towns List")
 st.write("Below is the list of towns based on your selection:")
