@@ -39,8 +39,8 @@ else:
             hover_name="Town",
             hover_data={"County": True, "Commute Time (mins)": True, "Asking Price 2b": True},
             color="County",
-            size_max=15,
-            zoom=6,
+            size=[20] * len(data_filtered),  # Uniform larger size for dots
+            zoom=8,  # Increased zoom level
             height=500,
             mapbox_style="carto-positron"
         )
