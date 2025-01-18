@@ -71,5 +71,3 @@ else:
         color_discrete_sequence=["salmon"]
     )
     st.plotly_chart(fig)
-
-
