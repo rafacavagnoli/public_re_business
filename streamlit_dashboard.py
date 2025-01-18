@@ -29,6 +29,22 @@ data_filtered = data[
 if data_filtered.empty:
     st.write("No data available for the selected filters.")
 else:
+    # Map Visualization as the first element
+    if "Latitude" in data.columns and "Longitude" in data.columns:
+        st.write("### Map of Filtered Towns")
+        fig = px.scatter_geo(
+            data_filtered,
+            lat="Latitude",
+            lon="Longitude",
+            hover_name="Town",
+            hover_data={"County": True, "Commute Time (mins)": True, "Asking Price 2b": True},
+            color="County",
+            size_max=15,
+            projection="natural earth",
+            title="Geographic Distribution of Filtered Towns"
+        )
+        st.plotly_chart(fig)
+
     # Display the filtered data as a table
     st.write("### Filtered Towns")
     st.dataframe(data_filtered)
@@ -112,20 +128,3 @@ else:
         color_discrete_sequence=["blue"]
     )
     st.plotly_chart(fig)
-
-    # Map Visualization
-    if "Latitude" in data.columns and "Longitude" in data.columns:
-        st.write("### Map of Filtered Towns")
-        fig = px.scatter_mapbox(
-            data_filtered,
-            lat="Latitude",
-            lon="Longitude",
-            hover_name="Town",
-            hover_data={"County": True, "Commute Time (mins)": True},
-            color="County",
-            size_max=15,
-            zoom=6,
-            height=500
-        )
-        fig.update_layout(mapbox_style="open-street-map")
-        st.plotly_chart(fig)
