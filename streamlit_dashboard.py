@@ -24,10 +24,10 @@ commute_time_filter = st.sidebar.slider("Max Commute Time (mins):", min_value=0,
 # Applying filters
 data_filtered = data[
     (data["County"].isin(county_filter)) &
-    (data["1-Bedroom Price"] <= price_1b_filter) &
-    (data["2-Bedroom Price"] <= price_2b_filter) &
-    (data["3-Bedroom Price"] <= price_3b_filter) &
-    (data["Commute Time"] <= commute_time_filter)
+    (data["Asking Price 1b"] <= price_1b_filter) &
+    (data["Asking Price 2b"] <= price_2b_filter) &
+    (data["Asking Price 3b"] <= price_3b_filter) &
+    (data["Commute Time (mins)"] <= commute_time_filter)
 ]
 
 st.write("### Filtered Towns")
