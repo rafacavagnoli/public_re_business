@@ -13,11 +13,9 @@ st.sidebar.header("Filter Options")
 # Important filters at the top
 price_2b_filter = st.sidebar.slider("Max Price for 2-Bedroom (£):", min_value=0, max_value=500000, value=500000, step=5000)
 commute_time_filter = st.sidebar.slider("Max Commute Time (mins):", min_value=0, max_value=120, value=120, step=5)
-county_filter = st.sidebar.multiselect("Select Counties:", options=data["County"].unique(), default=data["County"].unique())
-
-# Additional filters for other bedroom prices
 price_1b_filter = st.sidebar.slider("Max Price for 1-Bedroom (£):", min_value=0, max_value=500000, value=500000, step=5000)
 price_3b_filter = st.sidebar.slider("Max Price for 3-Bedroom (£):", min_value=0, max_value=500000, value=500000, step=5000)
+county_filter = st.sidebar.multiselect("Select Counties:", options=data["County"].unique(), default=data["County"].unique())
 
 # Applying filters
 data_filtered = data[
@@ -31,6 +29,10 @@ data_filtered = data[
 if data_filtered.empty:
     st.write("No data available for the selected filters.")
 else:
+    # Display the filtered data as a table
+    st.write("### Filtered Towns")
+    st.dataframe(data_filtered)
+
     # Layout for visual appeal
     col1, col2 = st.columns(2)
 
@@ -71,5 +73,42 @@ else:
         labels={"Asking Price 2b": "Average Asking Price (£)"},
         title="Average Asking Price by County",
         color_discrete_sequence=["salmon"]
+    )
+    st.plotly_chart(fig)
+
+    # Median Asking Price by County
+    st.write("### Median Asking Price by County")
+    median_prices = data_filtered.groupby("County", as_index=False).agg({"Asking Price 2b": "median"})
+    fig = px.bar(
+        median_prices,
+        x="County", y="Asking Price 2b",
+        labels={"Asking Price 2b": "Median Asking Price (£)"},
+        title="Median Asking Price by County",
+        color_discrete_sequence=["orange"]
+    )
+    st.plotly_chart(fig)
+
+    # Rental Yield Distribution
+    st.write("### Rental Yield Distribution")
+    data_filtered["Yield 2b"] = (data_filtered["Rental Price 2b"] * 12) / data_filtered["Asking Price 2b"] * 100
+    fig = px.histogram(
+        data_filtered,
+        x="Yield 2b",
+        nbins=20,
+        labels={"Yield 2b": "Rental Yield (%)"},
+        title="Rental Yield Distribution for 2-Bedroom Properties",
+        color_discrete_sequence=["green"]
+    )
+    st.plotly_chart(fig)
+
+    # Asking Price Distribution
+    st.write("### Asking Price Distribution")
+    fig = px.histogram(
+        data_filtered,
+        x="Asking Price 2b",
+        nbins=20,
+        labels={"Asking Price 2b": "Asking Price (£)"},
+        title="Asking Price Distribution for 2-Bedroom Properties",
+        color_discrete_sequence=["blue"]
     )
     st.plotly_chart(fig)
