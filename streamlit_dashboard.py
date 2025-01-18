@@ -37,10 +37,12 @@ else:
     # Town Distribution by County
     with col1:
         st.write("### Town Distribution by County")
+        county_counts = data_filtered["County"].value_counts().reset_index()
+        county_counts.columns = ["County", "Number of Towns"]
         fig = px.bar(
-            data_filtered["County"].value_counts().reset_index(name="Number of Towns"),
-            x="index", y="Number of Towns",
-            labels={"index": "County"},
+            county_counts,
+            x="County", y="Number of Towns",
+            labels={"County": "County", "Number of Towns": "Number of Towns"},
             title="Town Count by County",
             color_discrete_sequence=["skyblue"]
         )
@@ -62,7 +64,7 @@ else:
 
     # Average Asking Price by County
     st.write("### Average Asking Price by County")
-    avg_prices = data_filtered.groupby("County", as_index=False)["Asking Price 2b"].mean()
+    avg_prices = data_filtered.groupby("County", as_index=False).agg({"Asking Price 2b": "mean"})
     fig = px.bar(
         avg_prices,
         x="County", y="Asking Price 2b",
