@@ -1,4 +1,3 @@
-
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -11,8 +10,25 @@ data = pd.read_excel(data_path)
 st.title("Real Estate Towns Dashboard")
 st.sidebar.header("Filter Options")
 
+# Adding filters for counties
 county_filter = st.sidebar.multiselect("Select Counties:", options=data["County"].unique(), default=data["County"].unique())
-data_filtered = data[data["County"].isin(county_filter)]
+
+# Adding filters for bedroom prices
+price_1b_filter = st.sidebar.slider("Max Price for 1-Bedroom (£):", min_value=0, max_value=500000, value=500000, step=5000)
+price_2b_filter = st.sidebar.slider("Max Price for 2-Bedroom (£):", min_value=0, max_value=500000, value=500000, step=5000)
+price_3b_filter = st.sidebar.slider("Max Price for 3-Bedroom (£):", min_value=0, max_value=500000, value=500000, step=5000)
+
+# Adding filter for commute time
+commute_time_filter = st.sidebar.slider("Max Commute Time (mins):", min_value=0, max_value=120, value=120, step=5)
+
+# Applying filters
+data_filtered = data[
+    (data["County"].isin(county_filter)) &
+    (data["1-Bedroom Price"] <= price_1b_filter) &
+    (data["2-Bedroom Price"] <= price_2b_filter) &
+    (data["3-Bedroom Price"] <= price_3b_filter) &
+    (data["Commute Time"] <= commute_time_filter)
+]
 
 st.write("### Filtered Towns")
 st.dataframe(data_filtered)
