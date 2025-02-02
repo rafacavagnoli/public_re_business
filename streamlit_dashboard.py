@@ -5,7 +5,8 @@ import plotly.express as px
 # Load Data
 file_path = "dashboard_london.csv"  # Ensure correct path
 df = pd.read_csv(file_path)
-df.columns = [col.strip() for col in df.columns]
+df.columns = [col.strip().replace('
+', ' ') for col in df.columns]
 
 # Cleaning Data - Fix Non-Numeric Conversion Issues
 columns_to_clean = ['Av. House Price (2019)', 'Av. Rental \nPrice 1b', 'Av. Rental \nPrice 2b', 'Av. Rental \nPrice 3b']
