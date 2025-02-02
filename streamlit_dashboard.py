@@ -53,16 +53,22 @@ if not filtered_df.empty and selected_columns:
 if not filtered_df.empty:
     st.subheader("Data Visualizations")
     
-    # Histogram of asking prices
+    # Box plot of asking prices
     melted_df = filtered_df.melt(id_vars=['Town', 'Region'], value_vars=selected_columns, var_name='Bedroom Type', value_name='Asking Price')
-    fig_hist = px.histogram(melted_df, x='Asking Price', title='Distribution of Asking Prices')
-    st.plotly_chart(fig_hist)
+    fig_box = px.box(melted_df, x='Bedroom Type', y='Asking Price', title='Asking Price Distribution by Bedroom Type')
+    st.plotly_chart(fig_box)
     
-    # Average asking price per region
+    # Bar chart: Average asking price per region
     region_avg_df = melted_df.groupby('Region')['Asking Price'].mean().reset_index()
-    fig_bar = px.bar(region_avg_df, x='Region', y='Asking Price', title='Average Asking Price by Region')
+    fig_bar = px.bar(region_avg_df, x='Region', y='Asking Price', title='Average Asking Price by Region', text_auto=True)
     st.plotly_chart(fig_bar)
     
-    # Scatter plot of town vs asking price
-    fig_scatter = px.scatter(melted_df, x='Town', y='Asking Price', color='Region', title='Asking Price by Town')
-    st.plotly_chart(fig_scatter)
+    # Scatter plot: Commute time vs asking price (if commute time exists)
+    if 'Commute Time 2019 (mins)' in df.columns:
+        merged_df = melted_df.merge(df[['Town', 'Commute Time 2019 (mins)']], on='Town', how='left')
+        fig_scatter = px.scatter(merged_df, x='Commute Time 2019 (mins)', y='Asking Price', color='Region', title='Commute Time vs Asking Price')
+        st.plotly_chart(fig_scatter)
+    
+    # Line chart: Asking price trends across towns
+    fig_line = px.line(melted_df, x='Town', y='Asking Price', color='Bedroom Type', title='Asking Price Trends by Town')
+    st.plotly_chart(fig_line)
