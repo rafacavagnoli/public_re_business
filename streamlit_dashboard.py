@@ -25,7 +25,7 @@ bedroom_columns = {
 selected_columns = [bedroom_columns[i] for i in range(selected_bedrooms[0], selected_bedrooms[1] + 1) if i in bedroom_columns and bedroom_columns[i] in df.columns]
 
 # Keep relevant columns in filtered DataFrame
-filtered_df = df[['Town', 'Region'] + selected_columns].copy()
+filtered_df = df.copy()
 
 # Price Range Slider
 if not filtered_df.empty and selected_columns:
@@ -36,7 +36,7 @@ if not filtered_df.empty and selected_columns:
     # Apply price filtering
     filtered_df = filtered_df.dropna(subset=selected_columns)
     filtered_df = filtered_df[(filtered_df[selected_columns] >= selected_price[0]) & (filtered_df[selected_columns] <= selected_price[1])]
-    filtered_df = df.loc[filtered_df.index, ['Town', 'Region'] + selected_columns]
+    filtered_df = df.loc[filtered_df.index]
 
 # Display number of places
 st.title("London Real Estate Data Overview")
@@ -72,6 +72,21 @@ if not filtered_df.empty:
     # Violin plot: Asking price distribution
     fig_violin = px.violin(melted_df, x='Bedroom Type', y='Asking Price', box=True, points='all', title='Asking Price Spread by Bedroom Type')
     st.plotly_chart(fig_violin)
+    
+    # Bar chart: Count of properties by region
+    region_counts = filtered_df['Region'].value_counts().reset_index()
+    region_counts.columns = ['Region', 'Count']
+    fig_bar_region = px.bar(region_counts, x='Region', y='Count', title='Number of Properties by Region')
+    st.plotly_chart(fig_bar_region)
+    
+    # Scatter plot: Asking Price vs Population (if population data is available)
+    if 'Population (1,000s) (2021)' in filtered_df.columns:
+        fig_scatter_pop = px.scatter(filtered_df, x='Population (1,000s) (2021)', y=selected_columns[0], color='Region', title='Asking Price vs Population')
+        st.plotly_chart(fig_scatter_pop)
+    
+    # Histogram: Asking price distribution
+    fig_hist = px.histogram(melted_df, x='Asking Price', title='Histogram of Asking Prices')
+    st.plotly_chart(fig_hist)
 
 # Display Table
 st.subheader("Filtered Data Table")
