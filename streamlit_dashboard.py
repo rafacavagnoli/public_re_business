@@ -21,9 +21,10 @@ bedroom_columns = {
 }
 
 # Filter Data
-if selected_bedrooms:
+selected_columns = [bedroom_columns[bedroom] for bedroom in selected_bedrooms if bedroom in bedroom_columns and bedroom_columns[bedroom] in df.columns]
+if selected_columns:
     selected_columns = [bedroom_columns[bedroom] for bedroom in selected_bedrooms if bedroom in bedroom_columns]
-    df = df[["Town", "Region", "Population (1,000s) (2021)"] + selected_columns].dropna()
+    df = df.loc[:, ["Town", "Region", "Population (1,000s) (2021)"] + selected_columns].dropna() if selected_columns else df
 
 # Display number of places
 st.title("London Real Estate Data Overview")
