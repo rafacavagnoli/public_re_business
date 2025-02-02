@@ -3,9 +3,10 @@ import pandas as pd
 import plotly.express as px
 
 # Load Data
-file_path = "dashboard_london.csv"  # Ensure correct path
+file_path = "dashboard_london_cleaned.csv"  # Ensure correct path
 df = pd.read_csv(file_path)
 df.columns = [col.strip().replace('
+', ' ') for col in df.columns]
 ', ' ') for col in df.columns]
 
 # Cleaning Data - Fix Non-Numeric Conversion Issues
@@ -28,12 +29,9 @@ selected_bedroom = st.sidebar.selectbox("Select Number of Bedrooms", bedroom_opt
 
 # Map Bedroom Selection to House Price Column
 bedroom_column_map = {
-    '1 Bedroom': 'Av. Asking 
-Price 1b'.strip(),
-    '2 Bedroom': 'Av. Asking 
-Price 2b'.strip(),
-    '3 Bedroom': 'Av. Asking 
-Price 3b'.strip()
+    '1 Bedroom': 'Av. Asking Price 1b',
+    '2 Bedroom': 'Av. Asking Price 2b',
+    '3 Bedroom': 'Av. Asking Price 3b'
 }
 selected_price_column = bedroom_column_map[selected_bedroom]
 selected_price_column = bedroom_column_map[selected_bedroom]
