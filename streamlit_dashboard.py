@@ -77,10 +77,10 @@ if not filtered_df.empty:
         st.plotly_chart(fig_scatter_pop)
     
     # Line chart: Asking price trends per town
-    fig_line = px.line(melted_df.sort_values(by='Town'), x='Town', y='Asking Price', color='Bedroom Type', title='Asking Price Trends by Town')
+    fig_line = px.line(melted_df.sort_values(by='Region'), x='Region', y='Asking Price', color='Bedroom Type', title='Asking Price Trends by Region')
     st.plotly_chart(fig_line)
     
     # Bar chart: Top 10 towns with the highest asking prices
-    top_towns = melted_df.groupby('Town', as_index=False)['Asking Price'].mean().nlargest(10, columns='Asking Price')
-    fig_bar_towns = px.bar(top_towns, x='Town', y='Asking Price', title='Top 10 Towns with Highest Asking Prices')
+    top_regions = melted_df.groupby('Region', as_index=False)['Asking Price'].mean().nlargest(10, columns='Asking Price')
+    fig_bar_regions = px.bar(top_regions, x='Region', y='Asking Price', title='Top 10 Regions with Highest Asking Prices')
     st.plotly_chart(fig_bar_towns)
