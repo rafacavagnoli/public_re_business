@@ -91,6 +91,11 @@ if not filtered_df.empty:
         with col2:
             fig_commute_hist = px.histogram(filtered_df, x='Commute Time 2019 (mins)', title='Histogram of Commute Times')
             st.plotly_chart(fig_commute_hist)
+        
+        # Commute Time vs. Average Asking Price per Location
+        commute_avg_price = filtered_df.groupby('Town')[['Commute Time 2019 (mins)'] + selected_columns].mean().reset_index()
+        fig_commute_avg_price = px.scatter(commute_avg_price, x='Commute Time 2019 (mins)', y=selected_columns[0], color='Town', title='Commute Time vs. Average Asking Price per Location')
+        st.plotly_chart(fig_commute_avg_price)
     
     # Histogram: Asking price distribution
     fig_hist = px.histogram(melted_df, x='Asking Price', title='Histogram of Asking Prices')
