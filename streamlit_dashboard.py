@@ -73,4 +73,4 @@ if not filtered_df.empty:
 
 # Display Table
 st.subheader("Filtered Data Table")
-st.dataframe(filtered_df.reset_index(drop=True))
+st.dataframe(filtered_df.set_index('Town').fillna('N/A').reset_index())
