@@ -7,6 +7,10 @@ file_path = "dashboard_london_fully_cleaned.csv"
 df = pd.read_csv(file_path)
 df.columns = [col.strip() for col in df.columns]
 
+# Ensure numeric columns are properly formatted
+df['Av. House Price (2019)'] = pd.to_numeric(df['Av. House Price (2019)'], errors='coerce')
+df['Av. UL Yield (2b)'] = pd.to_numeric(df['Av. UL Yield (2b)'], errors='coerce')
+
 # Sidebar Filters
 st.sidebar.header("Filters")
 towns = ['All'] + df['Town'].dropna().unique().tolist()
@@ -53,7 +57,7 @@ st.title("London Real Estate Dashboard")
 
 # Key Metrics
 st.subheader("Key Metrics")
-st.metric(label="Population (2021)", value=f"{int(filtered_df['Population (1,000s) (2021)'].values[0] * 1000):,}" if (not filtered_df.empty and 'Population (1,000s) (2021)' in filtered_df.columns) else "N/A")
+st.metric(label="Population (2021)", value=f"{int(filtered_df['Population (1,000s) (2021)'].values[0] * 1000):,}" if (not filtered_df.empty and 'Population (1,000s) (2021)' in filtered_df.columns and not pd.isna(filtered_df['Population (1,000s) (2021)'].values[0])) else "N/A")
 st.metric(label="Average House Price (2019)", value=f"£{filtered_df[selected_price_column].values[0]:,.0f}" if (not filtered_df.empty and selected_price_column in filtered_df.columns) else "N/A")
 
 # Rental Price Bar Chart
@@ -69,8 +73,11 @@ else:
 
 # Scatter Plot: House Price vs. Yield
 st.subheader("House Price vs. Yield")
-fig_yield = px.scatter(df, x='Av. House Price (2019)', y='Av. UL Yield (2b)', hover_data=['Town'], title="House Price vs Yield")
-st.plotly_chart(fig_yield)
+if not df[['Av. House Price (2019)', 'Av. UL Yield (2b)']].isnull().values.any():
+    fig_yield = px.scatter(df, x='Av. House Price (2019)', y='Av. UL Yield (2b)', hover_data=['Town'], title="House Price vs Yield")
+    st.plotly_chart(fig_yield)
+else:
+    st.write("Warning: Missing numeric data for House Price or Yield.")
 
 # Additional Chart: Commute Time vs House Price
 st.subheader("Commute Time vs House Price")
