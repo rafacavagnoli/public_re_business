@@ -59,7 +59,7 @@ if not filtered_df.empty:
     st.plotly_chart(fig_box)
     
     # Bar chart: Average asking price per region
-    region_avg_df = melted_df.groupby('Region')['Asking Price'].mean().reset_index()
+    region_avg_df = melted_df.groupby('Region', as_index=False)['Asking Price'].mean()
     fig_bar = px.bar(region_avg_df, x='Region', y='Asking Price', title='Average Asking Price by Region', text_auto=True)
     st.plotly_chart(fig_bar)
     
@@ -68,7 +68,3 @@ if not filtered_df.empty:
         merged_df = melted_df.merge(df[['Town', 'Commute Time 2019 (mins)']], on='Town', how='left')
         fig_scatter = px.scatter(merged_df, x='Commute Time 2019 (mins)', y='Asking Price', color='Region', title='Commute Time vs Asking Price')
         st.plotly_chart(fig_scatter)
-    
-    # Line chart: Asking price trends across towns
-    fig_line = px.line(melted_df, x='Town', y='Asking Price', color='Bedroom Type', title='Asking Price Trends by Town')
-    st.plotly_chart(fig_line)
