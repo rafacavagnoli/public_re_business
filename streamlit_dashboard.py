@@ -5,7 +5,8 @@ import plotly.express as px
 # Load Data
 file_path = "dashboard_london_fully_cleaned.csv"
 df = pd.read_csv(file_path)
-df.columns = [col.strip().replace('  ', ' ') for col in df.columns]
+df.columns = [col.strip().replace('  ', ' ').replace('
+', '') for col in df.columns]
 
 # Sidebar Filters
 st.sidebar.header("Filters")
@@ -54,7 +55,7 @@ st.title("London Real Estate Dashboard")
 # Key Metrics
 st.subheader("Key Metrics")
 st.metric(label="Population (2021)", value=f"{filtered_df['Population (1,000s) (2021)'].values[0] * 1000:,.0f}" if not filtered_df.empty else "N/A")
-st.metric(label="Average House Price (2019)", value=f"\u00a3{filtered_df[selected_price_column].values[0]:,.0f}" if not filtered_df.empty else "N/A")
+st.metric(label="Average House Price (2019)", value=f"£{filtered_df[selected_price_column].values[0]:,.0f}" if (not filtered_df.empty and selected_price_column in filtered_df.columns) else "N/A")
 
 # Rental Price Bar Chart
 st.subheader("Average Rental Prices by Bedroom Count")
