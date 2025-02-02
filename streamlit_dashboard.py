@@ -24,7 +24,7 @@ bedroom_columns = {
 selected_columns = [bedroom_columns[i] for i in range(selected_bedrooms[0], selected_bedrooms[1] + 1) if i in bedroom_columns and bedroom_columns[i] in df.columns]
 
 # Keep relevant columns in filtered DataFrame
-filtered_df = df[['Town', 'Region'] + selected_columns].dropna()
+filtered_df = df[['Town', 'Region'] + selected_columns]
 
 # Price Range Slider
 if not filtered_df.empty and selected_columns:
@@ -33,11 +33,14 @@ if not filtered_df.empty and selected_columns:
     selected_price = st.sidebar.slider("Select Asking Price Range", min_price, max_price, (min_price, max_price))
     
     # Apply price filtering
-    filtered_df = filtered_df[(filtered_df[selected_columns] >= selected_price[0]) & (filtered_df[selected_columns] <= selected_price[1])].dropna()
+    filtered_df = filtered_df[(filtered_df[selected_columns] >= selected_price[0]) & (filtered_df[selected_columns] <= selected_price[1])]
 
 # Display number of places
 st.title("London Real Estate Data Overview")
-st.write(f"Number of places in dataset: {filtered_df.shape[0]}")
+if filtered_df.empty:
+    st.write("No properties match the selected filters.")
+else:
+    st.write(f"Number of places in dataset: {filtered_df.shape[0]}")
 
 # Calculate overall average asking price
 if not filtered_df.empty and selected_columns:
