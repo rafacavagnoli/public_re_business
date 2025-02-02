@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import plotly.express as px
 
 # Load Data
 file_path = "dashboard_london_fully_cleaned.csv"
@@ -47,3 +48,21 @@ if not filtered_df.empty and selected_columns:
     overall_avg_price = filtered_df[selected_columns].mean().mean()
     st.subheader("Average Asking Price")
     st.write(f"Overall Average Asking Price: £{overall_avg_price:,.0f}")
+
+# Generate Charts
+if not filtered_df.empty:
+    st.subheader("Data Visualizations")
+    
+    # Histogram of asking prices
+    melted_df = filtered_df.melt(id_vars=['Town', 'Region'], value_vars=selected_columns, var_name='Bedroom Type', value_name='Asking Price')
+    fig_hist = px.histogram(melted_df, x='Asking Price', title='Distribution of Asking Prices')
+    st.plotly_chart(fig_hist)
+    
+    # Average asking price per region
+    region_avg_df = melted_df.groupby('Region')['Asking Price'].mean().reset_index()
+    fig_bar = px.bar(region_avg_df, x='Region', y='Asking Price', title='Average Asking Price by Region')
+    st.plotly_chart(fig_bar)
+    
+    # Scatter plot of town vs asking price
+    fig_scatter = px.scatter(melted_df, x='Town', y='Asking Price', color='Region', title='Asking Price by Town')
+    st.plotly_chart(fig_scatter)
