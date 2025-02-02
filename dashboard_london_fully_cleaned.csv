@@ -1,0 +1,142 @@
+Town,Type,Population,Region,County,Local Authority,Commute Time (mins),Av. Rental Price 1b,Av. Rental Price 2b,Av. Rental Price 3b,Av. Asking Price 1b,Av. Asking Price 2b,Av. Asking Price 3b,Av. Asking Price 4b,Av. Selling Price (psqft),Av. UL Yield (1b),Av. UL Yield (2b),Av. UL Yield (3b),Season Ticket Price (2019),Life  Satisfaction 2019 (TotallyMoney),Rank,Rank 2019 (Totallymoney),Rank Green Space (Telegr. 2024),Rank Primary School (Telegr. 2024),Rank Secondary School (Telegr. 2024),Rank Commuting (Telegr. 2024),Rank Leisure (Telegr. 2024)
+South Benfleet,Town,,East of England,Essex,Castle Point,43,,1385,,234000,333000,411000,520000,391,,0.04990991,,3516,7.59,18.85,72,7,65,4,2,33
+Coventry,City," 345,000 ",West Midlands,West Midlands,Warwickshire,,,,,,,,,,,,,,,43.95,,13,6,11,89,4
+Bracknell,Town," 113,000 ",South-East England,Berkshire,Bracknell Forest,,1158,1463,1771,214000,328000,469000,618000,431,0.064934579,0.05352439,0.045313433,,,66.3,,54,40,30,98,43
+Reading,Borough & Town," 175,000 ",South-East England,Berkshire,Reading,27,,,,,,,,,,,,4604,7.67,57.9,31,97,74,53,39,71
+Northampton,Town," 249,000 ",East Midlands,Northamptonshire,West Northamptonshire,46,806,1037,1267,130000,206000,286000,439000,285,0.0744,0.060407767,0.053160839,5780,7.56,68.25,94,86,49,52,71,56
+Luton,Borough & Town," 227,000 ",East of England,Bedfordshire,Luton,45,957,1268,1568,154000,249000,343000,471000,346,0.074571429,0.061108434,0.054857143,4308,7.71,45.2,38,52,28,50,40,61
+Peterborough,City," 216,000 ",East of England,Cambridgeshire,Peterborough,51,782,996,1196,120000,181000,251000,370000,249,0.0782,0.066033149,0.057179283,8000,7.58,46.65,110,44,98,78,5,93
+Swindon,Town," 184,000 ",South West England,Wiltshire,Swindon,55,,,,,,,,,,,,9016,7.71,112,112,,,,,
+Southend-on-Sea,City," 180,000 ",East of England,Essex,Southend-on-Sea,,961,1315,1662,168000,261000,397000,570000,345,0.068642857,0.06045977,0.050236776,,,38,,8,66,83,57,2
+Slough,Town," 143,000 ",South-East England,Berkshire,Slough,21,1212,1554,1980,208000,314000,482000,685000,467,0.069923077,0.059388535,0.049294606,2712,7.55,21,21,,,,,
+Sittingbourne,Industrial Town," 54,000 ",South-East England,Berkshire,Swale,,905,1234,1409,149000,246000,320000,450000,330,0.072885906,0.060195122,0.0528375,,,60.35,,90,99,87,28,100
+Cambridge,City," 147,000 ",East of England,Cambridgeshire,Cambridge,52,1419,1739,1941,285000,420000,563000,750000,541,0.059747368,0.049685714,0.041371226,5768,7.68,111,111,,,,,
+Newbury,Market Town," 34,000 ",South-East England,Berkshire,West Berkshire,50,957,1311,1607,198000,172000,261000,428000,381,0.058,0.091465116,0.073885057,5248,7.85,42.35,62,74,13,29,48,19
+Colchester,City," 130,000 ",East of England,Essex,Colchester,54,866,1170,1470,149000,217000,341000,453000,337,0.069744966,0.064700461,0.051730205,5264,7.63,95,95,,,,,
+Ascot,Town," 12,000 ",South-East England,Berkshire,Windsor and Maidenhead,56,1408,1716,2634,263000,490000,690000,1010000,528,0.064243346,0.04202449,0.045808696,4604,7.75,115,115,,,,,
+Basildon,Town," 116,000 ",East of England,Essex,Basildon,34,1110,1426,1662,171000,269000,359000,539000,365,0.077894737,0.063613383,0.055554318,2940,7.38,69,69,,,,,
+Windsor,Town," 32,000 ",South-East England,Berkshire,Windsor and Maidenhead,37,1364,1716,2521,283000,395000,582000,824000,523,0.057837456,0.052131646,0.051979381,2956,7.75,41,41,,,,,
+Maidenhead,Market Town," 67,000 ",South-East England,Berkshire,Windsor and Maidenhead,21,,,,,,541000,793000,477,,,,3188,7.75,24.45,19,53,4,28,23,17
+Chelmsford,City," 111,000 ",East of England,Essex,Chelmsfod,37,1158,1430,1729,207000,290000,437000,616000,420,0.067130435,0.059172414,0.047478261,4092,7.49,39.15,83,59,5,2,51,13
+Twyford,Village," 6,000 ",South-East England,Berkshire,Wokingham,,,,,,,,,,,,,,,59.15,,14,82,94,59,88
+Workingham,Market Town," 38,000 ",South-East England,Berkshire,Wokingham,47,,,,,,,,,,,,4604,7.98,38.3,33,67,43,61,25,40
+Bedford,Market Town," 107,000 ",East of England,Bedfordshire,Bedford,64,863,1161,1377,154000,232000,332000,468000,327,0.067246753,0.060051724,0.049771084,5500,7.92,79,79,,,,,
+Taplow,Village," 2,000 ",South-East England,Buckinghamshire,Buckinghamshire,35,,,,,,,,,,,,3080,7.79,58.35,45,65,22,33,90,10
+Watford,Borough & Town," 102,000 ",East of England,Hertfordshire,Watford,19,1270,1653,2025,242000,352000,529000,780000,508,0.062975207,0.056352273,0.045935728,3204,7.76,21,7,,,,,
+Hemel Hempstead,Town," 96,000 ",East of England,Hertfordshire,Dacorum,26,1071,1443,1885,187000,299000,430000,576000,413,0.068727273,0.057913043,0.052604651,3832,7.79,51.25,10,15,62,72,54,72
+Gerrards Cross,Town," 8,000 ",South-East England,Buckinghamshire,Buckinghamshire,22,1344,1901,2416,351000,487000,750000,965000,575,0.045948718,0.046841889,0.038656,2724,7.79,54,54,,,,,
+Stevenage,Borough & Town," 89,000 ",East of England,Hertfordshire,Stevenage,23,1082,1376,1652,183000,293000,387000,539000,376,0.07095082,0.056354949,0.051224806,3856,7.38,46.5,55,89,77,84,30,25
+Nuneaton,Market Town," 89,000 ",West Midlands,Warwickshire,Nuneaton and Bedworth,,723,877,1074,100000,185000,261000,381000,246,0.08676,0.056886486,0.04937931,,,65.8,,42,72,74,80,63
+Princes Risborough,Market Town," 8,000 ",South-East England,Buckinghamshire,Buckinghamshire,39,,1463,,268000,365000,531000,828000,477,,0.04809863,,3788,7.95,23,23,,,,,
+St Albans,City," 82,000 ",East of England,Hertfordshire,St Albans,36,,,,,,,,,,,,3828,7.57,67,67,,,,,
+Burnham,Village," 11,000 ",South-East England,Buckinghamshire,Buckinghamshire,,1203,1407,1925,201000,313000,514000,810000,466,0.071820896,0.053942492,0.044941634,,,33.6,,80,46,20,8,62
+Rugby,Town," 78,000 ",West Midlands,Warwickshire,Rugby,50,765,900,1232,110000,202000,289000,440000,283,0.083454545,0.053465347,0.051155709,8380,7.71,78.35,108,64,91,81,68,98
+Tamworth,Borough & Town," 78,000 ",West Midlands,Staffordshire,Tamworth,,773,901,1169,121000,211000,269000,397000,271,0.076661157,0.051241706,0.052148699,,,67.8,,48,45,18,96,60
+Beaconsfield,Market Town," 12,000 ",South-East England,Buckinghamshire,Buckinghamshire,23,1377,1866,2494,303000,527000,835000,1260000,632,0.054534653,0.042489564,0.035841916,3280,7.79,57.55,87,58,7,17,83,28
+Amersham,Market Town," 15,000 ",South-East England,Buckinghamshire,Buckinghamshire,33,1128,1645,1970,290000,442000,672000,1000000,601,0.046675862,0.044660633,0.035178571,3660,7.69,89,89,,,,,
+High Wycombe,Market Town," 76,000 ",South-East England,Buckinghamshire,Buckinghamshire,30,1148,1378,1764,195000,274000,426000,620000,438,0.070646154,0.060350365,0.049690141,3668,7.95,21,3,,,,,
+Bletchley,Constituent Town," 37,000 ",South-East England,Buckinghamshire,Milton Keynes,39,1074,1236,1497,166000,239000,342000,451000,331,0.077638554,0.062058577,0.052526316,4648,7.64,34.35,51,12,17,5,37,57
+Milton Keynes,City," 264,000 ",South-East England,Buckinghamshire,Milton Keynes,44,1073,1290,1567,184000,257000,366000,511000,352,0.069978261,0.060233463,0.051377049,5504,7.64,85,85,,,,,
+Brighton and Hove,City," 278,000 ",South-East England,East Sussex,Brighton and Hove,59,,,,,,,,,,,,4884,7.51,25.95,113,2,56,19,9,47
+Overton,Village," 4,000 ",South-East England,Hampshire,Basingstoke and Deane,55,,,,,,,,,,,,4740,8.09,53.35,9,24,39,96,88,5
+Kettering,Market Town," 57,000 ",East Midlands,Northamptonshire,North Northamptonshire,,727,895,1169,134000,196000,260000,395000,251,0.065104478,0.054795918,0.053953846,,,63.6,,71,57,39,94,15
+Wellinborough,Market Town," 57,000 ",East Midlands,Northamptonshire,Wellingborough,48,,,,,,,,,,,,6764,7.72,82,82,,,,,
+Brentwood,Town," 55,000 ",East of England,Essex,Brentwood,40,1301,1579,2013,260000,381000,568000,764000,494,0.060046154,0.049732283,0.042528169,2756,7.73,53,53,,,,,
+Basingstoke,Town," 114,000 ",South-East England,Hampshire,Basingstoke and Deane,44,1111,1355,1511,165000,213000,326000,564000,327,0.0808,0.076338028,0.055619632,4604,8.09,29.15,8,10,16,16,33,50
+Winchfield,Village," 1,000 ",South-East England,Hampshire,Hart,49,,,,,,,,,,,,4176,7.67,58.7,103,100,67,90,19,94
+Welwyn Garden City,Garden City," 51,000 ",East of England,Hertfordshire,Welwyn Hatfield,,1121,1404,1727,211000,305000,466000,621000,466,0.063753555,0.055239344,0.044472103,,,29.05,,9,32,100,10,75
+Hook,Village," 9,000 ",South-East England,Hampshire,Hart,53,,1322,,,307000,470000,685000,439,,0.051674267,,4248,7.95,46.9,35,85,19,25,45,45
+Fleet,Town," 23,000 ",South-East England,Hampshire,Hart,44,1081,1405,1827,190000,293000,482000,664000,441,0.068273684,0.057542662,0.045485477,4368,7.67,64.4,86,83,11,66,73,52
+Cheshunt,Town," 46,000 ",East of England,Hertfordshire,Broxbourne,26,1238,1559,1927,222000,315000,464000,660000,459,0.066918919,0.059390476,0.049836207,2288,7.92,21,1,30,8,22,27,12
+Grays,Town," 44,000 ",East of England,Essex,Thurrock,39,1097,1382,1772,179000,275000,409000,527000,401,0.073541899,0.060305455,0.05199022,2448,7.64,30.85,27,84,36,7,15,31
+Leighton Buzzard,Market Town," 43,000 ",East of England,Bedfordshire,Central Bedfordshire,32,898,1157,,186000,247000,376000,,379,0.057935484,0.056210526,,4600,7.77,51.05,24,43,90,76,56,27
+Bishops Stortford,Market Town," 41,000 ",East of England,Hertfordshire,East Hertfordshire,38,,,,,,,,,,,,4320,7.66,33.75,74,11,33,38,12,89
+Hatfield,Town," 41,000 ",East of England,Hertfordshire,Welwyn Hatfield,25,,,,,,,,,,,,2808,7.83,32.4,4,22,12,24,26,74
+Aldershot,Town," 37,000 ",South-East England,Hampshire,Rushmoor,,936,1255,1628,153000,250000,401000,552000,363,0.073411765,0.06024,0.048718204,,,50.8,,38,44,35,63,53
+Farnborough,Town," 57,000 ",South-East England,Hampshire,Rushmoor,38,1170,1395,1777,196000,295000,441000,613000,406,0.071632653,0.056745763,0.048353741,4324,7.67,43,43,,,,,
+Tring,Market Town," 12,000 ",South-East England,Hertfordshire,Dacorum,37,,1420,,231000,365000,553000,851000,517,,0.046684932,,4336,7.79,56.4,49,28,93,13,52,82
+Chorleywood,Village," 11,000 ",South-East England,Hertfordshire,Three Rivers,30,,,,,464000,728000,1320000,618,,,,2792,7.81,64,64,,,,,
+Ashford,Town," 83,000 ",South-East England,Kent,Ashford,36,952,1247,1490,160000,248000,307000,442000,339,0.0714,0.06033871,0.058241042,6656,7.42,107,107,,,,,
+Godalming,Market Town," 21,000 ",South-East England,Kent,Borough of Waverley,,1189,1501,1917,245000,378000,548000,755000,540,0.058236735,0.047650794,0.041978102,,,56.3,,46,52,34,70,55
+Laindon,"Former Town, now part of Basildon"," 37,000 ",East of England,Essex,Basildon,34,1090,1374,1683,179000,290000,372000,493000,383,0.073072626,0.056855172,0.054290323,2940,7.38,76.55,71,41,63,48,95,77
+Canterbury,City," 55,000 ",South-East England,Kent,Canterbury,,864,1323,1451,174000,274000,362000,510000,345,0.059586207,0.057941606,0.048099448,,,63.4,,20,79,67,79,68
+Hitchin,Market Town," 35,000 ",East of England,Hertfordshire,North Hertfordshire,30,1021,1354,1738,239000,351000,543000,787000,489,0.051263598,0.046290598,0.03840884,4068,7.82,28.45,20,33,71,8,16,39
+Ebbsfleet Valley,Development," 40,000 ",South-East England,Kent,Dartford,18,,,,,,,,,,,,4816,7.7,21,16,,,,,
+Letchworth,Garden City," 34,000 ",East of England,Hertfordshire,North Hertfordshire,35,,1367,,181000,299000,443000,658000,422,,0.054862876,,4612,7.82,61.05,28,96,73,27,44,84
+Dartford,Principal Town," 51,000 ",South-East England,Kent,Dartford,47,1246,1608,1960,227000,306000,414000,513000,426,0.065867841,0.063058824,0.056811594,4816,7.77,39.9,58,19,18,3,60,26
+St Neots,Town," 33,000 ",East of England,Cambridgeshire,Huntingdonshire,38,,,,,,,,,,,,5256,7.7,22.1,96,27,2,12,17,24
+Wickford,Town," 33,000 ",East of England,Essex,Basildon,41,1035,1266,1808,199000,320000,433000,530000,425,0.06241206,0.047475,0.050106236,3816,7.38,48.2,100,66,94,89,29,32
+Gravesend,Town," 58,000 ",South-East England,Kent,Gravesham,23,1004,1328,1671,166000,249000,371000,510000,352,0.072578313,0.064,0.054048518,3616,7.76,21,5,,,,,
+Rayleigh,Market Town," 32,000 ",East of England,Essex,Rochford,44,,1416,,193000,341000,428000,544000,426,,0.049829912,,4028,8,21,14,,,,,
+Harlow,Borough & Town," 93,000 ",South-East England,Kent,Harlow,34,1126,1464,1854,187000,294000,400000,540000,373,0.072256684,0.059755102,0.05562,2288,7.7,39.7,11,39,70,69,41,22
+Maidstone,Town," 109,000 ",South-East England,Kent,Maidstone,,982,1270,1564,169000,252000,389000,527000,373,0.069727811,0.06047619,0.048246787,,,46.45,,35,29,1,77,18
+Strood,Town," 40,000 ",South-East England,Kent,Medway,,987,1267,1469,155000,251000,329000,490000,340,0.076412903,0.060573705,0.053580547,,,42.05,,98,31,86,35,21
+Harpenden,Town," 31,000 ",East of England,Hertfordshire,St Albans,44,,,,,357000,559000,673000,497,,,,3940,7.57,31.85,114,40,48,46,13,36
+Rochester,Town," 63,000 ",South-East England,Kent,Medway,38,1064,1294,1532,169000,249000,345000,503000,348,0.075550296,0.062361446,0.053286957,4972,7.63,60,60,,,,,
+Billericay,Town," 29,000 ",East of England,Essex,Basildon,32,1177,1450,1730,275000,366000,400000,692000,474,0.05136,0.047540984,0.0519,3596,7.38,97,97,,,,,
+Bushey,Town," 28,000 ",East of England,Hertfordshire,Hertsmere,19,,,,270000,433000,626000,884000,541,,,,2568,7.65,74.6,26,70,96,64,76,79
+Hertford,County Town," 27,000 ",East of England,Hertfordshire,East Hertfordshire,48,1197,1461,1839,262000,361000,540000,865000,514,0.054824427,0.048565097,0.040866667,2904,7.66,32.25,76,32,37,73,18,41
+Witham,Town," 26,000 ",East of England,Essex,Braintree,45,919,1122,1426,161000,269000,363000,518000,359,0.068496894,0.050052045,0.047140496,4568,7.72,50,50,,,,,
+Huntingdon,Market Town," 25,000 ",East of England,Cambridgeshire,Huntingdonshire,47,892,1049,1346,,133000,244000,325000,322,,0.094646617,0.066196721,5768,7.7,84,84,,,,,
+Pitsea,"Former Town, now part of Basildon"," 25,000 ",East of England,Essex,Basildon,41,,1325,1639,159000,266000,334000,431000,338,,0.059774436,0.058886228,3080,7.38,48.9,81,16,14,9,84,14
+Rickmansworth,Town," 25,000 ",East of England,Hertfordshire,Three Rivers,26,1369,1710,2468,291000,385000,643000,954000,559,0.056453608,0.053298701,0.046059098,3668,7.81,37.75,36,25,75,98,20,54
+Biggleswade,Market Town," 23,000 ",East of England,Bedfordshire,Central Bedfordshire,36,,1186,1564,182000,259000,371000,486000,379,,0.054949807,0.050587601,5084,7.77,32,32,,,,,
+Chatham,Town," 81,000 ",South-East England,Kent,Medway,41,1010,1334,1414,173000,249000,313000,482000,333,0.070057803,0.064289157,0.054210863,5332,7.63,50.3,68,18,34,21,87,3
+Leigh on Sea,Town," 23,000 ",East of England,Essex,Southend-on-Sea,47,1065,1321,1726,262000,340000,481000,671000,443,0.048778626,0.046623529,0.043060291,3516,7.63,55.7,78,51,89,49,36,83
+Gillingham,Town," 109,000 ",South-East England,Kent,Medway,,984,1317,1442,164000,260000,327000,472000,332,0.072,0.060784615,0.052917431,,,42.55,,60,26,44,55,20
+Potters Bar,Town," 22,500 ",East of England,Hertfordshire,Hertsmere,18,1366,1619,2122,246000,403000,618000,829000,539,0.066634146,0.048208437,0.041203883,2220,7.65,56.05,15,63,50,79,42,90
+Swanley,Town," 18,000 ",South-East England,Kent,Sevenoaks,35,1233,1310,,204000,340000,429000,633000,436,0.072529412,0.046235294,,2716,7.55,26.1,37,17,41,85,11,42
+Sevenoaks,Town," 30,000 ",South-East England,Kent,Sevenoaks,34,1329,1642,2186,295000,399000,603000,1030000,566,0.054061017,0.049383459,0.043502488,3608,7.55,104,104,,,,,
+Tonbridge,Market Town," 36,000 ",South-East England,Kent,Tonbridge and Mailing,44,1014,1420,2011,219000,362000,516000,1040000,465,0.055561644,0.047071823,0.046767442,6656,7.87,58.75,80,99,92,99,47,23
+Ware,Town," 20,000 ",East of England,Hertfordshire,East Hertfordshire,47,1097,1457,1809,226000,307000,488000,570000,480,0.058247788,0.05695114,0.044483607,2880,7.66,40.65,61,78,78,88,14,37
+Berkhamsted,Market Town," 18,500 ",East of England,Hertfordshire,Dacorum,31,,1564,2290,293000,446000,659000,971000,605,,0.042080717,0.041699545,4036,7.79,42.2,70,29,24,37,62,11
+Royal Tunbridge Wells,Town," 60,000 ",South-East England,Kent,Tunbridge Wells,,1012,1337,1780,,228000,329000,422000,398,,0.070368421,0.064924012,,,53.65,,1,95,91,49,87
+Faversham,,,South-East England,Kent,,,,1152,1500,245000,305000,389000,563000,368,,0.04532459,0.046272494,,,78.95,,31,88,95,91,99
+Rainham,,,South-East England,Kent,,,932,1306,1504,161000,290000,364000,496000,359,0.069465839,0.054041379,0.049582418,,,74.7,,73,84,77,86,64
+Royston,Town,17,East of England,Hertfordshire,North Hertfordshire,40,942,1205,1487,167000,284000,419000,565000,411,0.067688623,0.050915493,0.042587112,4936,7.82,44.35,34,88,10,55,50,16
+Oxford,Non-Metropolitan District,163,South-East England,Oxfordshire,Oxford,57,1396,1613,2021,260000,381000,502000,678000,502,0.064430769,0.05080315,0.048310757,5256,7.75,109,109,,,,,
+Broxbourne,Town,15,East of England,Hertfordshire,Broxbourne,32,,1419,,234000,284000,508000,788000,444,,0.059957746,,2848,7.92,52.3,6,69,1,62,85,1
+Cholsey,Village,3,South-East England,Oxfordshire,South Oxfordshire,54,,,,,344000,441000,634000,429,,,,4604,8.06,30,30,,,,,
+Leagrave,Suburb ,13,East of England,Bedfordshire,Luton,,926,1268,1596,159000,273000,339000,454000,356,0.069886792,0.055736264,0.056495575,,,51,,62,3,26,58,70
+Didcot,Town,32,South-East England,Oxfordshire,South Oxfordshire,43,938,1301,1653,192000,280000,393000,515000,390,0.058625,0.055757143,0.050473282,5528,8.06,21,12,,,,,
+Appleford,Village,0,South-East England,Oxfordshire,Vale of White Horse,58,,,,,,,,396,,,,5256,7.83,39.8,106,47,53,36,7,86
+Sandy,Town,12,East of England,Bedfordshire,Central Bedfordshire,63,,,,,264000,341000,456000,344,,,,5156,7.77,57.15,92,37,15,56,82,29
+Tilbury,Port Town,12,East of England,Essex,Thurrock,49,1071,,1662,132000,253000,334000,,346,0.097363636,,0.059712575,2448,7.59,36.85,39,56,23,58,34,30
+Esher,Town,7,South-East England,Surrey,Elmbridge,23,1341,1810,2653,352000,540000,751000,1280000,661,0.045715909,0.040222222,0.042391478,2468,7.9,52,52,,,,,
+Weybridge,Town,15,South-East England,Surrey,Elmbridge,34,1337,1754,2669,297000,458000,755000,1150000,604,0.054020202,0.045956332,0.042421192,3340,7.9,48,48,,,,,
+Walton-on-Thames,Market Town,23,South-East England,Surrey,Elmbridge,29,1360,1673,2242,282000,405000,618000,895000,553,0.05787234,0.04957037,0.043533981,3036,7.9,21,17,,,,,
+Epsom,Town,31,South-East England,Surrey,Epsom and Ewell,36,1302,1668,2263,275000,400000,616000,814000,517,0.056814545,0.05004,0.044084416,2340,7.85,56.3,22,92,60,42,38,81
+Guildford,Town,77,South-East England,Surrey,Guildford,36,1252,1750,2070,248000,395000,555000,795000,526,0.060580645,0.053164557,0.044756757,4600,7.74,50.2,77,95,83,45,31,38
+Baldock,Market Town,10,East of England,Hertfordshire,North Hertfordshire,39,,1390,,185000,304000,439000,600000,432,,0.054868421,,4448,7.82,59.75,25,68,54,14,72,49
+Leatherhead,Town,11,South-East England,Surrey,Mole Valley,44,1285,1655,2432,240000,348000,632000,928000,530,0.06425,0.057068966,0.046177215,2560,7.53,47.85,98,50,27,75,32,73
+Waltham Cross,Town,8.5,East of England,Hertfordshire,Broxbourne,28,1253,1552,1968,219000,316000,474000,681000,458,0.068657534,0.058936709,0.049822785,2028,7.92,21,2,,,,,
+Earlswood,Suburb ,5,South-East England,Surrey,Reigate and Banstead,48,1176,1500,,,219000,327000,558000,446,,0.082191781,,2884,7.56,72.05,105,72,59,40,66,92
+Banstead,Town,17,South-East England,Surrey,Reigate and Banstead,46,1401,1731,,277000,371000,650000,856000,519,0.060693141,0.055989218,,1976,7.56,91,91,,,,,
+Redhill,Town,18,South-East England,Surrey,Reigate and Banstead,37,1231,1577,1871,216000,304000,521000,683000,458,0.068388889,0.06225,0.04309405,2868,7.56,40.6,56,87,9,54,43,9
+Sawbridgeworth,Town,8,East of England,Hertfordshire,East Hertfordshire,39,1118,,,215000,314000,495000,660000,454,0.0624,,,4116,7.66,65,65,,,,,
+Horley,Town,22,South-East England,Surrey,Reigate and Banstead,31,1193,1441,2052,196000,298000,483000,640000,449,0.073040816,0.058026846,0.050981366,3372,7.56,46,46,,,,,
+Reigate,Town,22,South-East England,Surrey,Reigate and Banstead,46,1384,1680,2095,248000,399000,613000,908000,533,0.066967742,0.050526316,0.041011419,2868,7.56,41.15,102,55,51,80,22,44
+Arlesey,Town,6,East of England,Bedfordshire,Central Bedfordshire,55,,1306,,225000,294000,419000,607000,402,,0.053306122,,4592,7.77,66,66,,,,,
+Purfleet,Town,6,East of England,Essex,Thurrock,33,1150,1481,1725,172000,248000,400000,475000,394,0.080232558,0.07166129,0.05175,2448,7.59,21,13,,,,,
+Virginia Water,Village,6,South-East England,Surrey,Runnymede,45,,1958,,,483000,765000,1140000,576,,0.048645963,,3060,7.57,116,116,,,,,
+Egham,Town,7,South-East England,Surrey,Runnymede,,1279,1663,2119,247000,398000,524000,759000,499,0.062137652,0.050140704,0.048526718,,,53.1,,82,87,92,46,34
+Staines-upon-Thames,Market Town,18,South-East England,Surrey,Spelthorne,35,1336,1808,2081,258000,384000,515000,668000,475,0.062139535,0.0565,0.04848932,3024,7.71,21,18,,,,,
+Oxted,Town,11,South-East England,Surrey,Tandridge,33,,1682,2512,,429000,621000,903000,528,,0.047048951,0.048541063,2400,7.62,54.8,73,36,64,97,74,6
+Shenfield,Suburb ,5,East of England,Essex,Brentwood,29,,1625,,,451000,693000,831000,571,,0.043237251,,3184,7.73,44.2,63,26,76,82,21,80
+Farnham,Market Town,40,South-East England,Surrey,Waverley,,,,,,,,,,,,,,,60.75,,76,21,10,75,65
+Woking,Borough & Town,104,South-East England,Surrey,Woking,26,1252,1590,1914,230000,326000,516000,761000,491,0.065321739,0.058527607,0.044511628,3792,7.63,67.85,47,79,86,60,53,91
+Meldreth,Village,2,East of England,Cambridgeshire,South Cambridgeshire,51,,,,,321000,434000,781000,401,,,,4936,7.92,26.75,75,34,38,51,3,51
+Haslemere,,,South-East England,Surrey,,,980,1455,1987,222000,374000,691000,950000,505,0.052972973,0.046684492,0.034506512,,,76.75,,91,55,15,97,66
+Foxton,Village,1,East of England,Cambridgeshire,South Cambridgeshire,56,,,,,,,,,,,,4936,7.67,66.15,90,21,81,93,67,78
+Sherpreth,Village,1,East of England,Cambridgeshire,South Cambridgeshire,54,,,,,,,,,,,,4936,7.92,27.05,42,45,30,32,4,59
+Three Bridges,Suburb ,6,South-East England,West Sussex,Crawley,36,,1470,,198000,246000,387000,503000,359,,0.071707317,,3856,7.68,29,29,,,,,
+Crawley,Borough & Town,120,South-East England,West Sussex,Crawley,41,1121,1461,1809,203000,271000,376000,552000,390,0.06626601,0.064693727,0.057734043,4584,7.68,49.35,57,5,58,65,78,8
+Banbury,,,,Oxfordshire,,,926,1152,1442,149000,226000,332000,494000,319,0.074577181,0.061168142,0.052120482,,,76.75,,75,85,31,81,95
+Eastleigh,,,,Hampshire,,,889,1184,1491,158000,259000,374000,561000,365,0.067518987,0.054857143,0.047839572,,,72.45,,57,68,59,99,48
+Horsham,Market Town,51,South-East England,West Sussex,Horsham,,1142,1437,1853,207000,330000,464000,648000,459,0.066202899,0.052254545,0.047922414,,,50.4,,23,20,47,64,69
+Flitwick,,,,Bedfordshire,,,914,1063,1462,176000,276000,381000,509000,380,0.062318182,0.046217391,0.046047244,,,73.3,,81,25,41,100,58
+Hassocks,Village,8,South-East England,West Sussex,Mid Sussex,,,1454,,,378000,537000,666000,497,,0.04615873,,,,69.65,,77,42,57,93,46
+Lewes,,,,East Sussex,,,961,1428,,251000,417000,573000,895000,520,0.045944223,0.041093525,,,,74.4,,94,97,43,65,96
+Burgess Hill,Town,31,South-East England,West Sussex,Mid Sussex,46,1086,1314,2027,184000,327000,440000,570000,427,0.070826087,0.048220183,0.055281818,4540,7.57,29,93,3,69,63,1,67
+Winchester,,,,Hampshire,,,1117,1403,1776,220000,374000,552000,751000,497,0.060927273,0.045016043,0.038608696,,,71.3,,49,100,70,69,97
+Haywards Heath,Town,34,South-East England,West Sussex,Mid Sussex,44,999,1365,1736,200000,300000,475000,684000,455,0.05994,0.0546,0.043856842,4540,7.79,39.65,59,61,61,71,6,76
