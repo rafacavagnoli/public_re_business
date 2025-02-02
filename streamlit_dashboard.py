@@ -7,7 +7,7 @@ file_path = "dashboard_london.csv"  # Ensure correct path
 df = pd.read_csv(file_path)
 
 # Cleaning Data - Fix Non-Numeric Conversion Issues
-columns_to_clean = ['Av. House Price (2019)', 'Av. Rental \nPrice 1b']
+columns_to_clean = ['Av. House Price (2019)', 'Av. Rental \nPrice 1b', 'Av. Rental \nPrice 2b', 'Av. Rental \nPrice 3b']
 for col in columns_to_clean:
     df[col] = pd.to_numeric(df[col].replace('[^0-9.]', '', regex=True), errors='coerce')
 
@@ -20,15 +20,27 @@ regions = ['All'] + df['Region'].dropna().unique().tolist()
 selected_town = st.sidebar.selectbox("Select a Town", towns)
 selected_region = st.sidebar.selectbox("Select a Region", regions)
 
-# New Filter: House Price Range
-min_price, max_price = st.sidebar.slider("Select House Price Range", int(df['Av. House Price (2019)'].min()), int(df['Av. House Price (2019)'].max()), (int(df['Av. House Price (2019)'].min()), int(df['Av. House Price (2019)'].max())))
+# New Filter: Number of Bedrooms
+bedroom_options = ['1 Bedroom', '2 Bedroom', '3 Bedroom']
+selected_bedroom = st.sidebar.selectbox("Select Number of Bedrooms", bedroom_options)
+
+# Map Bedroom Selection to House Price Column
+bedroom_column_map = {
+    '1 Bedroom': 'Av. Rental \nPrice 1b',
+    '2 Bedroom': 'Av. Rental \nPrice 2b',
+    '3 Bedroom': 'Av. Rental \nPrice 3b'
+}
+selected_price_column = bedroom_column_map[selected_bedroom]
+
+# New Filter: House Price Range Based on Bedroom Type
+min_price, max_price = st.sidebar.slider("Select House Price Range", int(df[selected_price_column].min()), int(df[selected_price_column].max()), (int(df[selected_price_column].min()), int(df[selected_price_column].max())))
 
 filtered_df = df.copy()
 if selected_town != 'All':
     filtered_df = filtered_df[filtered_df['Town'] == selected_town]
 if selected_region != 'All':
     filtered_df = filtered_df[filtered_df['Region'] == selected_region]
-filtered_df = filtered_df[(filtered_df['Av. House Price (2019)'] >= min_price) & (filtered_df['Av. House Price (2019)'] <= max_price)]
+filtered_df = filtered_df[(filtered_df[selected_price_column] >= min_price) & (filtered_df[selected_price_column] <= max_price)]
 
 # Dashboard Title
 st.title("London Real Estate Dashboard")
@@ -45,7 +57,7 @@ else:
     commute_time = "N/A"
 st.metric(label="Average Commute Time (mins)", value=commute_time)
 
-st.metric(label="Average House Price (2019)", value=f"£{filtered_df['Av. House Price (2019)'].values[0]:,.0f}" if not filtered_df.empty else "N/A")
+st.metric(label="Average House Price (2019)", value=f"\u00a3{filtered_df['Av. House Price (2019)'].values[0]:,.0f}" if not filtered_df.empty else "N/A")
 
 # Rental Price Bar Chart
 st.subheader("Average Rental Prices by Bedroom Count")
@@ -70,7 +82,19 @@ st.plotly_chart(fig_hist)
 
 # Additional Chart: Commute Time vs House Price
 st.subheader("Commute Time vs House Price")
-fig_commute = px.scatter(df, x='Commute Time 2019 (mins)', y='Av. House Price (2019)', hover_data=['Town'], title="Commute Time vs House Price")
+if 'Commute Time 2019 (mins)' in df.columns and 'Av. House Price (2019)' in df.columns:
+    df_filtered = df.dropna(subset=['Commute Time 2019 (mins)', 'Av. House Price (2019)'])
+    if not df_filtered.empty:
+        fig_commute = px.scatter(df_filtered, x='Commute Time 2019 (mins)', y='Av. House Price (2019)', hover_data=['Town'], title="Commute Time vs House Price")
+    else:
+        fig_commute = None
+else:
+    fig_commute = None
+
+if fig_commute:
+    st.plotly_chart(fig_commute)
+else:
+    st.write("Insufficient data available for Commute Time vs House Price chart.")
 st.plotly_chart(fig_commute)
 
 # Ranking Table
