@@ -93,7 +93,8 @@ else:
     fig_commute = None
 
 if fig_commute:
-    else:
+    st.plotly_chart(fig_commute)
+else:
     st.write("Insufficient data available for Commute Time vs House Price chart.")
 st.plotly_chart(fig_commute)
 
