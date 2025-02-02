@@ -8,11 +8,11 @@ df = pd.read_csv(file_path)
 # Clean column names
 df.columns = [col.strip() for col in df.columns]
 
-# Display number of places
-st.title("London Real Estate Data Overview")
-st.write(f"Number of places in dataset: {df.shape[0]}")
+# Sidebar Filter
+st.sidebar.header("Filters")
+selected_bedrooms = st.sidebar.multiselect("Select Number of Bedrooms", ["1 Bedroom", "2 Bedroom", "3 Bedroom", "4 Bedroom"], default=["1 Bedroom", "2 Bedroom", "3 Bedroom", "4 Bedroom"])
 
-# Calculate average asking prices
+# Mapping bedroom selection to column
 bedroom_columns = {
     "1 Bedroom": "Av. Asking Price 1b",
     "2 Bedroom": "Av. Asking Price 2b",
@@ -20,6 +20,16 @@ bedroom_columns = {
     "4 Bedroom": "Av. Asking Price 4b"
 }
 
+# Filter Data
+if selected_bedrooms:
+    selected_columns = [bedroom_columns[bedroom] for bedroom in selected_bedrooms if bedroom in bedroom_columns]
+    df = df[["Town", "Region", "Population (1,000s) (2021)"] + selected_columns].dropna()
+
+# Display number of places
+st.title("London Real Estate Data Overview")
+st.write(f"Number of places in dataset: {df.shape[0]}")
+
+# Calculate average asking prices
 st.subheader("Average Asking Prices")
 
 # Calculate overall average asking price
@@ -32,6 +42,3 @@ for label, column in bedroom_columns.items():
         st.write(f"{label}: £{avg_price:,.0f}")
     else:
         st.write(f"{label}: Data not available")
-
-# Show raw data
-
