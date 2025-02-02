@@ -34,6 +34,7 @@ if not filtered_df.empty and selected_columns:
     selected_price = st.sidebar.slider("Select Asking Price Range", min_price, max_price, (min_price, max_price))
     
     # Apply price filtering
+    filtered_df = filtered_df.dropna(subset=selected_columns)
     filtered_df = filtered_df[(filtered_df[selected_columns] >= selected_price[0]) & (filtered_df[selected_columns] <= selected_price[1])]
 
 # Display number of places
