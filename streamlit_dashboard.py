@@ -53,7 +53,7 @@ st.title("London Real Estate Dashboard")
 
 # Key Metrics
 st.subheader("Key Metrics")
-st.metric(label="Population (2021)", value=f"{filtered_df['Population (1,000s) (2021)'].values[0] * 1000:,.0f}" if not filtered_df.empty else "N/A")
+st.metric(label="Population (2021)", value=f"{int(filtered_df['Population (1,000s) (2021)'].values[0] * 1000):,}" if (not filtered_df.empty and 'Population (1,000s) (2021)' in filtered_df.columns) else "N/A")
 st.metric(label="Average House Price (2019)", value=f"£{filtered_df[selected_price_column].values[0]:,.0f}" if (not filtered_df.empty and selected_price_column in filtered_df.columns) else "N/A")
 
 # Rental Price Bar Chart
@@ -71,6 +71,22 @@ else:
 st.subheader("House Price vs. Yield")
 fig_yield = px.scatter(df, x='Av. House Price (2019)', y='Av. UL Yield (2b)', hover_data=['Town'], title="House Price vs Yield")
 st.plotly_chart(fig_yield)
+
+# Additional Chart: Commute Time vs House Price
+st.subheader("Commute Time vs House Price")
+if 'Commute Time 2019 (mins)' in df.columns and 'Av. House Price (2019)' in df.columns:
+    fig_commute = px.scatter(df, x='Commute Time 2019 (mins)', y='Av. House Price (2019)', hover_data=['Town'], title="Commute Time vs House Price")
+    st.plotly_chart(fig_commute)
+else:
+    st.write("Warning: Commute time or house price data is missing.")
+
+# Additional Chart: Population vs House Price
+st.subheader("Population vs House Price")
+if 'Population (1,000s) (2021)' in df.columns and 'Av. House Price (2019)' in df.columns:
+    fig_population = px.scatter(df, x='Population (1,000s) (2021)', y='Av. House Price (2019)', hover_data=['Town'], title="Population vs House Price")
+    st.plotly_chart(fig_population)
+else:
+    st.write("Warning: Population or house price data is missing.")
 
 # Ranking Table
 st.subheader("Ranking Table")
