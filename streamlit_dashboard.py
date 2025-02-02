@@ -58,7 +58,6 @@ if not filtered_df.empty:
     fig_box = px.box(melted_df, x='Bedroom Type', y='Asking Price', title='Asking Price Distribution by Bedroom Type')
     st.plotly_chart(fig_box)
     
-        
     # Pie chart: Distribution of properties by region
     fig_pie = px.pie(df, names='Region', title='Distribution of Properties by Region')
     st.plotly_chart(fig_pie)
@@ -71,3 +70,17 @@ if not filtered_df.empty:
     # Violin plot: Asking price distribution
     fig_violin = px.violin(melted_df, x='Bedroom Type', y='Asking Price', box=True, points='all', title='Asking Price Spread by Bedroom Type')
     st.plotly_chart(fig_violin)
+    
+    # Scatter plot: Asking price vs. population (if population data exists)
+    if 'Population (1,000s) (2021)' in df.columns:
+        fig_scatter_pop = px.scatter(df, x='Population (1,000s) (2021)', y=selected_columns[0], color='Region', title='Asking Price vs. Population')
+        st.plotly_chart(fig_scatter_pop)
+    
+    # Line chart: Asking price trends per town
+    fig_line = px.line(melted_df, x='Town', y='Asking Price', color='Bedroom Type', title='Asking Price Trends by Town')
+    st.plotly_chart(fig_line)
+    
+    # Bar chart: Top 10 towns with the highest asking prices
+    top_towns = melted_df.groupby('Town')['Asking Price'].mean().nlargest(10).reset_index()
+    fig_bar_towns = px.bar(top_towns, x='Town', y='Asking Price', title='Top 10 Towns with Highest Asking Prices')
+    st.plotly_chart(fig_bar_towns)
