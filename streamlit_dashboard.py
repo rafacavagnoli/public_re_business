@@ -6,6 +6,9 @@ import plotly.express as px
 file_path = "dashboard_london.csv"  # Ensure correct path
 df = pd.read_csv(file_path)
 
+# Print available columns for debugging
+st.write("Available Columns:", df.columns.tolist())
+
 # Cleaning Data - Fix Non-Numeric Conversion Issues
 columns_to_clean = ['Av. House Price (2019)', 'Av. Rental \nPrice 1b']
 for col in columns_to_clean:
@@ -24,7 +27,15 @@ st.title("London Real Estate Dashboard")
 # Key Metrics
 st.subheader("Key Metrics")
 st.metric(label="Population (2021)", value=filtered_df['Population (1,000s) (2021)'].values[0])
-st.metric(label="Average Commute Time (mins)", value=filtered_df['Commute Time 2019 (mins)'].values[0])
+
+# Handle missing Commute Time column
+time_column = 'Commute Time 2019 (mins)'
+if time_column in filtered_df.columns and not filtered_df.empty:
+    commute_time = filtered_df[time_column].values[0]
+else:
+    commute_time = "N/A"
+st.metric(label="Average Commute Time (mins)", value=commute_time)
+
 st.metric(label="Average House Price (2019)", value=f"\u00a3{filtered_df['Av. House Price (2019)'].values[0]:,.0f}")
 
 # Rental Price Bar Chart
