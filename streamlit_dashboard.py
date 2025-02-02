@@ -5,6 +5,7 @@ import plotly.express as px
 # Load Data
 file_path = "dashboard_london_fully_cleaned.csv"
 df = pd.read_csv(file_path)
+df.columns = [col.strip() for col in df.columns]
 
 # Sidebar Filters
 st.sidebar.header("Filters")
@@ -19,10 +20,10 @@ selected_bedroom = st.sidebar.selectbox("Select Number of Bedrooms", bedroom_opt
 
 # Map Bedroom Selection to House Price Column
 bedroom_column_map = {
-    '1 Bedroom': 'Av. Asking Price 1b',
-    '2 Bedroom': 'Av. Asking Price 2b',
-    '3 Bedroom': 'Av. Asking Price 3b',
-    '4 Bedroom': 'Av. Asking Price 4b'
+    '1 Bedroom': 'Av. Asking  Price 1b',
+    '2 Bedroom': 'Av. Asking  Price 2b',
+    '3 Bedroom': 'Av. Asking  Price 3b',
+    '4 Bedroom': 'Av. Asking  Price 4b'
 }
 selected_price_column = bedroom_column_map[selected_bedroom]
 
@@ -44,7 +45,8 @@ if selected_town != 'All':
     filtered_df = filtered_df[filtered_df['Town'] == selected_town]
 if selected_region != 'All':
     filtered_df = filtered_df[filtered_df['Region'] == selected_region]
-filtered_df = filtered_df[(filtered_df[selected_price_column] >= min_price) & (filtered_df[selected_price_column] <= max_price)]
+if selected_price_column in filtered_df.columns:
+    filtered_df = filtered_df[(filtered_df[selected_price_column] >= min_price) & (filtered_df[selected_price_column] <= max_price)]
 
 # Dashboard Title
 st.title("London Real Estate Dashboard")
@@ -56,11 +58,14 @@ st.metric(label="Average House Price (2019)", value=f"\u00a3{filtered_df[selecte
 
 # Rental Price Bar Chart
 st.subheader("Average Rental Prices by Bedroom Count")
-rental_df = filtered_df[['Av. Asking Price 1b', 'Av. Asking Price 2b', 'Av. Asking Price 3b', 'Av. Asking Price 4b']]
-rental_df.columns = ['1 Bedroom', '2 Bedroom', '3 Bedroom', '4 Bedroom']
-rental_melted = rental_df.melt(var_name="Bedroom Count", value_name="Price")
-fig_rental = px.bar(rental_melted, x='Bedroom Count', y='Price', title="Asking Prices by Bedroom Count")
-st.plotly_chart(fig_rental)
+if all(col in filtered_df.columns for col in ['Av. Asking Price 1b', 'Av. Asking Price 2b', 'Av. Asking Price 3b', 'Av. Asking Price 4b']):
+    rental_df = filtered_df[['Av. Asking Price 1b', 'Av. Asking Price 2b', 'Av. Asking Price 3b', 'Av. Asking Price 4b']]
+    rental_df.columns = ['1 Bedroom', '2 Bedroom', '3 Bedroom', '4 Bedroom']
+    rental_melted = rental_df.melt(var_name="Bedroom Count", value_name="Price")
+    fig_rental = px.bar(rental_melted, x='Bedroom Count', y='Price', title="Asking Prices by Bedroom Count")
+    st.plotly_chart(fig_rental)
+else:
+    st.write("Warning: Rental price columns are missing from the dataset.")
 
 # Scatter Plot: House Price vs. Yield
 st.subheader("House Price vs. Yield")
