@@ -3,9 +3,9 @@ import pandas as pd
 import plotly.express as px
 
 # Load Data
-file_path = "/mnt/data/dashboard_london_fully_cleaned.csv""dashboard_london_fully_cleaned.csv"
+file_path = "dashboard_london_fully_cleaned.csv"
 df = pd.read_csv(file_path)
-df.columns = [col.strip().replace('  ', ' ') for col in df.columns]
+df.columns = [col.strip() for col in df.columns]
 
 # Sidebar Filters
 st.sidebar.header("Filters")
