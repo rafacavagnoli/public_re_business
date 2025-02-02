@@ -26,15 +26,24 @@ selected_bedroom = st.sidebar.selectbox("Select Number of Bedrooms", bedroom_opt
 
 # Map Bedroom Selection to House Price Column
 bedroom_column_map = {
-    '1 Bedroom': 'Av. Asking Price 1b',
-    '2 Bedroom': 'Av. Asking Price 2b',
-    '3 Bedroom': 'Av. Asking Price 3b'
+    '1 Bedroom': 'Av. Asking Price 1b'.strip(),
+    '2 Bedroom': 'Av. Asking Price 2b'.strip(),
+    '3 Bedroom': 'Av. Asking Price 3b'.strip()
 }
-selected_price_column = 'Av. House Price (2019)'
+selected_price_column = bedroom_column_map[selected_bedroom]
 selected_price_column = bedroom_column_map[selected_bedroom]
 
 # New Filter: House Price Range Based on Bedroom Type
-min_price, max_price = st.sidebar.slider("Select House Price Range", int(df[selected_price_column].min()), int(df[selected_price_column].max()), (int(df[selected_price_column].min()), int(df[selected_price_column].max())))
+if selected_price_column in df.columns:
+    min_price, max_price = st.sidebar.slider(
+        "Select House Price Range", 
+        int(df[selected_price_column].min()), 
+        int(df[selected_price_column].max()), 
+        (int(df[selected_price_column].min()), int(df[selected_price_column].max()))
+    )
+else:
+    min_price, max_price = 0, 0
+    st.sidebar.write("Warning: Selected price column not found in data.")), int(df[selected_price_column].max()), (int(df[selected_price_column].min()), int(df[selected_price_column].max())))
 
 filtered_df = df.copy()
 if selected_town != 'All':
