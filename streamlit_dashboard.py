@@ -25,7 +25,7 @@ bedroom_columns = {
 selected_columns = [bedroom_columns[i] for i in range(selected_bedrooms[0], selected_bedrooms[1] + 1) if i in bedroom_columns and bedroom_columns[i] in df.columns]
 
 # Keep relevant columns in filtered DataFrame
-filtered_df = df[['Town', 'Region'] + selected_columns]
+filtered_df = df[['Town', 'Region'] + selected_columns].copy()
 
 # Price Range Slider
 if not filtered_df.empty and selected_columns:
@@ -73,4 +73,4 @@ if not filtered_df.empty:
 
 # Display Table
 st.subheader("Filtered Data Table")
-st.dataframe(filtered_df)
+st.dataframe(filtered_df.reset_index(drop=True))
