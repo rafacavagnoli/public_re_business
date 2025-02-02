@@ -36,6 +36,7 @@ if not filtered_df.empty and selected_columns:
     # Apply price filtering
     filtered_df = filtered_df.dropna(subset=selected_columns)
     filtered_df = filtered_df[(filtered_df[selected_columns] >= selected_price[0]) & (filtered_df[selected_columns] <= selected_price[1])]
+    filtered_df = df.loc[filtered_df.index, ['Town', 'Region'] + selected_columns]
 
 # Display number of places
 st.title("London Real Estate Data Overview")
