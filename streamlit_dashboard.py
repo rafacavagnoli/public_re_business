@@ -58,11 +58,7 @@ if not filtered_df.empty:
     fig_box = px.box(melted_df, x='Bedroom Type', y='Asking Price', title='Asking Price Distribution by Bedroom Type')
     st.plotly_chart(fig_box)
     
-    # Bar chart: Average asking price per region
-    region_avg_df = melted_df.groupby('Region', as_index=False)['Asking Price'].mean()
-    fig_bar = px.bar(region_avg_df, x='Region', y='Asking Price', title='Average Asking Price by Region', text_auto=True)
-    st.plotly_chart(fig_bar)
-    
+        
     # Pie chart: Distribution of properties by region
     fig_pie = px.pie(df, names='Region', title='Distribution of Properties by Region')
     st.plotly_chart(fig_pie)
