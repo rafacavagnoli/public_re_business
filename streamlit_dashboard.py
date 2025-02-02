@@ -3,18 +3,19 @@ import pandas as pd
 import plotly.express as px
 
 # Load Data
-file_path = "dashboard_london.csv"  # Update path if necessary
+file_path = "dashboard_london.csv"  # Ensure correct path
 df = pd.read_csv(file_path)
 
-# Cleaning Data
+# Cleaning Data - Fix Non-Numeric Conversion Issues
 columns_to_clean = ['Av. House Price (2019)', 'Av. Rental \nPrice 1b']
 for col in columns_to_clean:
-    df[col] = df[col].replace('[^0-9.]', '', regex=True).astype(float)
+    df[col] = pd.to_numeric(df[col].replace('[^0-9.]', '', regex=True), errors='coerce')
 
 # Sidebar Filters
 st.sidebar.header("Filters")
 selected_town = st.sidebar.selectbox("Select a Town", df['Town'].dropna().unique())
 selected_region = st.sidebar.selectbox("Select a Region", df['Region'].dropna().unique())
+
 filtered_df = df[(df['Town'] == selected_town) & (df['Region'] == selected_region)]
 
 # Dashboard Title
@@ -24,7 +25,7 @@ st.title("London Real Estate Dashboard")
 st.subheader("Key Metrics")
 st.metric(label="Population (2021)", value=filtered_df['Population (1,000s) (2021)'].values[0])
 st.metric(label="Average Commute Time (mins)", value=filtered_df['Commute Time 2019 (mins)'].values[0])
-st.metric(label="Average House Price (2019)", value=f"£{filtered_df['Av. House Price (2019)'].values[0]:,.0f}")
+st.metric(label="Average House Price (2019)", value=f"\u00a3{filtered_df['Av. House Price (2019)'].values[0]:,.0f}")
 
 # Rental Price Bar Chart
 st.subheader("Average Rental Prices by Bedroom Count")
@@ -43,4 +44,4 @@ st.plotly_chart(fig_yield)
 st.subheader("Ranking Table")
 st.dataframe(filtered_df[['Town', 'Rank', 'Rank 2019 (Totallymoney)', 'Rank Green Space\n(Telegr. 2024)']].sort_values(by='Rank'))
 
-# Run with: streamlit run filename.py
+# Run with: streamlit run dashboard.py
