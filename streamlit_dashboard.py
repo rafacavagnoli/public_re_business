@@ -30,11 +30,7 @@ bedroom_column_map = {
     '2 Bedroom': 'Av. House Price (2019)',
     '3 Bedroom': 'Av. House Price (2019)'
 }
-selected_price_column = bedroom_column_map[selected_bedroom]bedroom_column_map = {
-    '1 Bedroom': 'Av. Rental \nPrice 1b',
-    '2 Bedroom': 'Av. Rental \nPrice 2b',
-    '3 Bedroom': 'Av. Rental \nPrice 3b'
-}
+selected_price_column = 'Av. House Price (2019)'
 selected_price_column = bedroom_column_map[selected_bedroom]
 
 # New Filter: House Price Range Based on Bedroom Type
