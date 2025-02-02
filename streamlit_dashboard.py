@@ -38,7 +38,7 @@ if not filtered_df.empty and selected_columns:
 # Display number of places
 st.title("London Real Estate Data Overview")
 if filtered_df.empty:
-    st.write("No properties match the selected filters.")
+    st.write(f"Number of places matching filters: {filtered_df.shape[0]}")
 else:
     st.write(f"Number of places in dataset: {filtered_df.shape[0]}")
 
