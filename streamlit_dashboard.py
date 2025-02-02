@@ -58,14 +58,14 @@ st.title("London Real Estate Dashboard")
 # Key Metrics
 st.subheader("Key Metrics")
 st.metric(label="Population (2021)", value=f"{int(filtered_df['Population (1,000s) (2021)'].values[0] * 1000):,}" if (not filtered_df.empty and 'Population (1,000s) (2021)' in filtered_df.columns and not pd.isna(filtered_df['Population (1,000s) (2021)'].values[0])) else "N/A")
-st.metric(label="Average House Price (2019)", value=f"£{filtered_df[selected_price_column].values[0]:,.0f}" if (not filtered_df.empty and selected_price_column in filtered_df.columns) else "N/A")
+st.metric(label="Average Asking Price", value=f"£{filtered_df[selected_price_column].mean():,.0f}" if (not filtered_df.empty and selected_price_column in filtered_df.columns) else "N/A")
 
 # Rental Price Bar Chart
 st.subheader("Average Rental Prices by Bedroom Count")
 if all(col in filtered_df.columns for col in ['Av. Asking Price 1b', 'Av. Asking Price 2b', 'Av. Asking Price 3b', 'Av. Asking Price 4b']):
     rental_df = filtered_df[['Av. Asking Price 1b', 'Av. Asking Price 2b', 'Av. Asking Price 3b', 'Av. Asking Price 4b']]
     rental_df.columns = ['1 Bedroom', '2 Bedroom', '3 Bedroom', '4 Bedroom']
-    rental_melted = rental_df.melt(var_name="Bedroom Count", value_name="Price")
+    rental_melted = rental_df.melt(var_name="Bedroom Count", value_name="Price").groupby('Bedroom Count', as_index=False).mean()
     fig_rental = px.bar(rental_melted, x='Bedroom Count', y='Price', title="Asking Prices by Bedroom Count")
     st.plotly_chart(fig_rental)
 else:
