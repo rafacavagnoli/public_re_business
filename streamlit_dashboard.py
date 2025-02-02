@@ -79,10 +79,18 @@ if not filtered_df.empty:
     fig_bar_region = px.bar(region_counts, x='Region', y='Count', title='Number of Properties by Region')
     st.plotly_chart(fig_bar_region)
     
-    # Scatter plot: Asking Price vs Population (if population data is available)
-    if 'Population (1,000s) (2021)' in filtered_df.columns:
-        fig_scatter_pop = px.scatter(filtered_df, x='Population (1,000s) (2021)', y=selected_columns[0], color='Region', title='Asking Price vs Population')
-        st.plotly_chart(fig_scatter_pop)
+    # Commute Time Charts (Side by Side)
+    if 'Commute Time 2019 (mins)' in filtered_df.columns:
+        st.subheader("Commute Time Analysis")
+        col1, col2 = st.columns(2)
+        
+        with col1:
+            fig_commute_scatter = px.scatter(filtered_df, x='Commute Time 2019 (mins)', y=selected_columns[0], color='Region', title='Commute Time vs Asking Price')
+            st.plotly_chart(fig_commute_scatter)
+        
+        with col2:
+            fig_commute_hist = px.histogram(filtered_df, x='Commute Time 2019 (mins)', title='Histogram of Commute Times')
+            st.plotly_chart(fig_commute_hist)
     
     # Histogram: Asking price distribution
     fig_hist = px.histogram(melted_df, x='Asking Price', title='Histogram of Asking Prices')
