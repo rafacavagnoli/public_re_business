@@ -2,130 +2,45 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 
-# Load the data
-data_path = "Extracted_Towns_and_Counties_with_LatLong.xlsx"
-data = pd.read_excel(data_path)
+# Load Data
+file_path = "dashboard_london.csv"  # Update path if necessary
+df = pd.read_csv(file_path)
 
-# Filter the data based on user input
-st.title("UK Real Estate Dashboard")
-st.sidebar.header("Filter Options")
+# Cleaning Data
+columns_to_clean = ['Av. House Price (2019)', 'Av. Rental \nPrice 1b']
+for col in columns_to_clean:
+    df[col] = df[col].replace('[^0-9.]', '', regex=True).astype(float)
 
-# Important filters at the top
-price_2b_filter = st.sidebar.slider("Max Price for 2-Bedroom (£):", min_value=0, max_value=500000, value=500000, step=5000)
-commute_time_filter = st.sidebar.slider("Max Commute Time (mins):", min_value=0, max_value=120, value=120, step=5)
-price_1b_filter = st.sidebar.slider("Max Price for 1-Bedroom (£):", min_value=0, max_value=500000, value=500000, step=5000)
-price_3b_filter = st.sidebar.slider("Max Price for 3-Bedroom (£):", min_value=0, max_value=500000, value=500000, step=5000)
-county_filter = st.sidebar.multiselect("Select Counties:", options=data["County"].unique(), default=data["County"].unique())
+# Sidebar Filters
+st.sidebar.header("Filters")
+selected_town = st.sidebar.selectbox("Select a Town", df['Town'].dropna().unique())
+selected_region = st.sidebar.selectbox("Select a Region", df['Region'].dropna().unique())
+filtered_df = df[(df['Town'] == selected_town) & (df['Region'] == selected_region)]
 
-# Applying filters
-data_filtered = data[
-    (data["County"].isin(county_filter)) &
-    (data["Asking Price 1b"] <= price_1b_filter) &
-    (data["Asking Price 2b"] <= price_2b_filter) &
-    (data["Asking Price 3b"] <= price_3b_filter) &
-    (data["Commute Time (mins)"] <= commute_time_filter)
-]
+# Dashboard Title
+st.title("London Real Estate Dashboard")
 
-if data_filtered.empty:
-    st.write("No data available for the selected filters.")
-else:
-    # Map Visualization as the first element
-    if "Latitude" in data.columns and "Longitude" in data.columns:
-        st.write("### Map of Filtered Towns")
-        fig = px.scatter_mapbox(
-            data_filtered,
-            lat="Latitude",
-            lon="Longitude",
-            hover_name="Town",
-            hover_data={"County": True, "Commute Time (mins)": True, "Asking Price 2b": True},
-            color="County",
-            size=[20] * len(data_filtered),  # Uniform larger size for dots
-            zoom=8,  # Increased zoom level
-            height=500,
-            mapbox_style="carto-positron"
-        )
-        st.plotly_chart(fig)
+# Key Metrics
+st.subheader("Key Metrics")
+st.metric(label="Population (2021)", value=filtered_df['Population (1,000s) (2021)'].values[0])
+st.metric(label="Average Commute Time (mins)", value=filtered_df['Commute Time 2019 (mins)'].values[0])
+st.metric(label="Average House Price (2019)", value=f"£{filtered_df['Av. House Price (2019)'].values[0]:,.0f}")
 
-    # Display the filtered data as a table
-    st.write("### Filtered Towns")
-    st.dataframe(data_filtered)
+# Rental Price Bar Chart
+st.subheader("Average Rental Prices by Bedroom Count")
+rental_df = filtered_df[['Av. Rental \nPrice 1b', 'Av. Rental \nPrice 2b', 'Av. Rental \nPrice 3b']]
+rental_df.columns = ['1 Bedroom', '2 Bedroom', '3 Bedroom']
+rental_melted = rental_df.melt(var_name="Bedroom Count", value_name="Price")
+fig_rental = px.bar(rental_melted, x='Bedroom Count', y='Price', title="Rental Prices")
+st.plotly_chart(fig_rental)
 
-    # Layout for visual appeal
-    col1, col2 = st.columns(2)
+# Scatter Plot: House Price vs. Yield
+st.subheader("House Price vs. Yield")
+fig_yield = px.scatter(df, x='Av. House Price (2019)', y='Av. UL Yield (2b)', hover_data=['Town'], title="House Price vs Yield")
+st.plotly_chart(fig_yield)
 
-    # Town Distribution by County
-    with col1:
-        st.write("### Town Distribution by County")
-        county_counts = data_filtered["County"].value_counts().reset_index()
-        county_counts.columns = ["County", "Number of Towns"]
-        fig = px.bar(
-            county_counts,
-            x="County", y="Number of Towns",
-            labels={"County": "County", "Number of Towns": "Number of Towns"},
-            title="Town Count by County",
-            color_discrete_sequence=["skyblue"]
-        )
-        st.plotly_chart(fig)
+# Ranking Table
+st.subheader("Ranking Table")
+st.dataframe(filtered_df[['Town', 'Rank', 'Rank 2019 (Totallymoney)', 'Rank Green Space\n(Telegr. 2024)']].sort_values(by='Rank'))
 
-    # Price vs Commute Time
-    with col2:
-        st.write("### Price vs Commute Time")
-        fig = px.scatter(
-            data_filtered,
-            x="Commute Time (mins)",
-            y="Asking Price 2b",
-            color="County",
-            hover_name="Town",
-            title="Price vs Commute Time for 2-Bedroom Properties",
-            labels={"Commute Time (mins)": "Commute Time (mins)", "Asking Price 2b": "Asking Price (£)"}
-        )
-        st.plotly_chart(fig)
-
-    # Average Asking Price by County
-    st.write("### Average Asking Price by County")
-    avg_prices = data_filtered.groupby("County", as_index=False).agg({"Asking Price 2b": "mean"})
-    fig = px.bar(
-        avg_prices,
-        x="County", y="Asking Price 2b",
-        labels={"Asking Price 2b": "Average Asking Price (£)"},
-        title="Average Asking Price by County",
-        color_discrete_sequence=["salmon"]
-    )
-    st.plotly_chart(fig)
-
-    # Median Asking Price by County
-    st.write("### Median Asking Price by County")
-    median_prices = data_filtered.groupby("County", as_index=False).agg({"Asking Price 2b": "median"})
-    fig = px.bar(
-        median_prices,
-        x="County", y="Asking Price 2b",
-        labels={"Asking Price 2b": "Median Asking Price (£)"},
-        title="Median Asking Price by County",
-        color_discrete_sequence=["orange"]
-    )
-    st.plotly_chart(fig)
-
-    # Rental Yield Distribution
-    st.write("### Rental Yield Distribution")
-    data_filtered["Yield 2b"] = (data_filtered["Rental Price 2b"] * 12) / data_filtered["Asking Price 2b"] * 100
-    fig = px.histogram(
-        data_filtered,
-        x="Yield 2b",
-        nbins=20,
-        labels={"Yield 2b": "Rental Yield (%)"},
-        title="Rental Yield Distribution for 2-Bedroom Properties",
-        color_discrete_sequence=["green"]
-    )
-    st.plotly_chart(fig)
-
-    # Asking Price Distribution
-    st.write("### Asking Price Distribution")
-    fig = px.histogram(
-        data_filtered,
-        x="Asking Price 2b",
-        nbins=20,
-        labels={"Asking Price 2b": "Asking Price (£)"},
-        title="Asking Price Distribution for 2-Bedroom Properties",
-        color_discrete_sequence=["blue"]
-    )
-    st.plotly_chart(fig)
+# Run with: streamlit run filename.py
