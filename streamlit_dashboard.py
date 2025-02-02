@@ -21,6 +21,11 @@ bedroom_columns = {
 }
 
 st.subheader("Average Asking Prices")
+
+# Calculate overall average asking price
+all_prices = [df[col].mean() for col in bedroom_columns.values() if col in df.columns]
+overall_avg_price = sum(all_prices) / len(all_prices) if all_prices else 0
+st.write(f"Overall Average Asking Price: £{overall_avg_price:,.0f}")
 for label, column in bedroom_columns.items():
     if column in df.columns:
         avg_price = df[column].mean()
@@ -29,5 +34,4 @@ for label, column in bedroom_columns.items():
         st.write(f"{label}: Data not available")
 
 # Show raw data
-st.subheader("Dataset Preview")
-st.dataframe(df.head())
+
