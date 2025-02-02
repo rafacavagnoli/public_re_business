@@ -26,9 +26,12 @@ selected_bedroom = st.sidebar.selectbox("Select Number of Bedrooms", bedroom_opt
 
 # Map Bedroom Selection to House Price Column
 bedroom_column_map = {
-    '1 Bedroom': 'Av. House Price (2019)',
-    '2 Bedroom': 'Av. House Price (2019)',
-    '3 Bedroom': 'Av. House Price (2019)'
+    '1 Bedroom': 'Av. Asking 
+Price 1b'.strip(),
+    '2 Bedroom': 'Av. Asking 
+Price 2b'.strip(),
+    '3 Bedroom': 'Av. Asking 
+Price 3b'.strip()
 }
 selected_price_column = 'Av. House Price (2019)'
 selected_price_column = bedroom_column_map[selected_bedroom]
@@ -93,8 +96,7 @@ else:
     fig_commute = None
 
 if fig_commute:
-    st.plotly_chart(fig_commute)
-else:
+    else:
     st.write("Insufficient data available for Commute Time vs House Price chart.")
 st.plotly_chart(fig_commute)
 
