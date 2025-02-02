@@ -63,8 +63,15 @@ if not filtered_df.empty:
     fig_bar = px.bar(region_avg_df, x='Region', y='Asking Price', title='Average Asking Price by Region', text_auto=True)
     st.plotly_chart(fig_bar)
     
-    # Scatter plot: Commute time vs asking price (if commute time exists)
-    if 'Commute Time 2019 (mins)' in df.columns:
-        merged_df = melted_df.merge(df[['Town', 'Commute Time 2019 (mins)']], on='Town', how='left')
-        fig_scatter = px.scatter(merged_df, x='Commute Time 2019 (mins)', y='Asking Price', color='Region', title='Commute Time vs Asking Price')
-        st.plotly_chart(fig_scatter)
+    # Pie chart: Distribution of properties by region
+    fig_pie = px.pie(df, names='Region', title='Distribution of Properties by Region')
+    st.plotly_chart(fig_pie)
+    
+    # Heatmap: Correlation between asking prices
+    price_corr = filtered_df[selected_columns].corr()
+    fig_heatmap = px.imshow(price_corr, text_auto=True, title='Correlation Between Asking Prices')
+    st.plotly_chart(fig_heatmap)
+    
+    # Violin plot: Asking price distribution
+    fig_violin = px.violin(melted_df, x='Bedroom Type', y='Asking Price', box=True, points='all', title='Asking Price Spread by Bedroom Type')
+    st.plotly_chart(fig_violin)
