@@ -26,6 +26,11 @@ selected_bedroom = st.sidebar.selectbox("Select Number of Bedrooms", bedroom_opt
 
 # Map Bedroom Selection to House Price Column
 bedroom_column_map = {
+    '1 Bedroom': 'Av. House Price (2019)',
+    '2 Bedroom': 'Av. House Price (2019)',
+    '3 Bedroom': 'Av. House Price (2019)'
+}
+selected_price_column = bedroom_column_map[selected_bedroom]bedroom_column_map = {
     '1 Bedroom': 'Av. Rental \nPrice 1b',
     '2 Bedroom': 'Av. Rental \nPrice 2b',
     '3 Bedroom': 'Av. Rental \nPrice 3b'
